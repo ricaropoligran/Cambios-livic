@@ -48,29 +48,42 @@
   .nav-wa { background: var(--copper); color: white; padding: 10px 24px; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: background 0.3s; }
   .nav-wa:hover { background: var(--copper-lt); }
 
-  /* HERO */
+  /* HERO — banner full width */
   .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    position: relative; padding: 130px 56px 80px; overflow: hidden;
+    padding-top: 78px; /* altura del nav */
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
     background: linear-gradient(135deg, #dde8e1 0%, #c8ddd2 40%, #b8d4c4 100%);
   }
-  .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b07850' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  .hero-banner {
+    width: 100%; max-height: 85vh;
+    overflow: hidden; position: relative;
   }
-  .hero-content { position: relative; z-index: 2; max-width: 560px; }
-  .hero-eyebrow { display: inline-flex; align-items: center; gap: 14px; font-size: 0.65rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--copper); margin-bottom: 28px; }
-  .hero-eyebrow::before { content: ''; display: block; width: 36px; height: 1px; background: var(--copper); }
-  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5.5vw, 5rem); font-weight: 300; line-height: 1.06; color: var(--text); margin-bottom: 28px; }
+  .hero-banner img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    display: block;
+  }
+  .hero-banner::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, #dde8e1);
+  }
+  .hero-text {
+    padding: 64px 56px 80px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 14px; font-size: 0.65rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--copper); margin-bottom: 24px; }
+  .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 36px; height: 1px; background: var(--copper); }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.1; color: var(--text); margin-bottom: 20px; }
   .hero h1 em { font-style: italic; color: var(--copper); }
-  .hero p { font-size: 0.9rem; line-height: 1.85; color: var(--text-mid); max-width: 420px; margin-bottom: 48px; }
+  .hero p { font-size: 0.9rem; line-height: 1.85; color: var(--text-mid); max-width: 480px; margin-bottom: 40px; }
   .hero-cta { display: inline-block; padding: 15px 44px; border: 1.5px solid var(--copper); color: var(--copper); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; transition: all 0.35s; position: relative; overflow: hidden; }
   .hero-cta::before { content: ''; position: absolute; inset: 0; background: var(--copper); transform: translateX(-101%); transition: transform 0.35s; }
   .hero-cta:hover { color: white; }
   .hero-cta:hover::before { transform: translateX(0); }
   .hero-cta span { position: relative; z-index: 1; }
-  .hero-visual { position: absolute; right: 4%; top: 50%; transform: translateY(-50%); width: 44%; max-width: 560px; z-index: 1; filter: drop-shadow(0 40px 80px rgba(42,61,50,0.2)); border-radius: 4px; overflow: hidden; }
-  .hero-visual img { width: 100%; height: auto; display: block; }
 
   /* SECTION HEADER */
   .section-header { text-align: center; margin-bottom: 60px; }
@@ -102,6 +115,14 @@
   .card-price { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--copper); }
   .card-wa { background: var(--copper); border: none; color: white; padding: 9px 18px; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; text-decoration: none; font-family: 'Jost', sans-serif; font-weight: 500; transition: background 0.25s; }
   .card-wa:hover { background: var(--copper-lt); }
+
+  /* VER MÁS */
+  .ver-mas-wrap { text-align: center; margin-top: 56px; }
+  .ver-mas-btn { display: inline-block; padding: 15px 52px; border: 1.5px solid var(--copper); color: var(--copper); background: none; font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; cursor: pointer; font-family: 'Jost', sans-serif; transition: all 0.35s; position: relative; overflow: hidden; }
+  .ver-mas-btn::before { content: ''; position: absolute; inset: 0; background: var(--copper); transform: translateX(-101%); transition: transform 0.35s; }
+  .ver-mas-btn:hover { color: white; }
+  .ver-mas-btn:hover::before { transform: translateX(0); }
+  .ver-mas-btn span { position: relative; z-index: 1; }
 
   /* MARCAS */
   #marcas { padding: 80px 56px; background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -141,9 +162,12 @@
   .hero-logo-deco img { width: clamp(260px, 32vw, 480px); height: auto; filter: drop-shadow(0 20px 60px rgba(42,61,50,0.18)); opacity: 0.9; }
   .hero-logo-deco-text { font-size: 0.6rem; letter-spacing: 0.55em; text-transform: uppercase; color: var(--copper-dk); opacity: 0.7; }
 
-  /* ABOUT VISUAL CON LOGO */
-  .about-visual { aspect-ratio: 4/5; background: linear-gradient(145deg, rgba(176,120,80,0.08) 0%, rgba(42,61,50,0.55) 100%); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(176,120,80,0.2); position: relative; overflow: hidden; }
-  .about-visual img { width: 75%; height: auto; object-fit: contain; position: relative; z-index: 2; filter: brightness(2.2) saturate(0.4) drop-shadow(0 10px 30px rgba(0,0,0,0.3)); opacity: 0.85; }
+  /* ABOUT VISUAL CON LOGO TEXTO */
+  .about-visual { aspect-ratio: 4/5; background: var(--bg-deep); display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .about-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-logo-deco { position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .about-logo-main { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 300; letter-spacing: 0.35em; color: var(--copper-lt); line-height: 1; }
+  .about-logo-sub { font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 300; letter-spacing: 0.55em; text-transform: uppercase; color: rgba(212,168,130,0.5); }
 
   /* MODAL PRODUCTO */
   .modal-overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(20,35,26,0.88); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 20px; }
@@ -173,8 +197,8 @@
   @media (max-width: 900px) {
     nav { padding: 12px 20px; }
     .nav-links { display: none; }
-    .hero { padding: 110px 22px 60px; }
-    .hero-visual { display: none; }
+    .hero-text { padding: 40px 22px 60px; }
+    .hero-banner { max-height: 55vw; }
     #catalogo { padding: 60px 20px; }
     #marcas { padding: 60px 20px; }
     .nosotros-wrap { padding: 60px 20px; grid-template-columns: 1fr; }
@@ -190,7 +214,7 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo" id="navLogoWrap">
-    <img src="Gemini_Generated_Image_l6qhqrl6qhqrl6qh.png" alt="Livic Private Collection" id="navLogoImg">
+    <span class="nav-logo-text">LIVIC<small>PRIVATE COLLECTION</small></span>
   </a>
   <ul class="nav-links">
     <li><a href="#catalogo">Catálogo</a></li>
@@ -203,15 +227,14 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
+  <div class="hero-banner">
+    <img src="https://i.imgur.com/rxCstm3.jpeg" alt="Livic Privé Collection">
+  </div>
+  <div class="hero-text">
     <div class="hero-eyebrow">Perfumería de Autor</div>
-    <h1>El Arte de<br>la <em>Fragancia</em><br>Perfecta</h1>
+    <h1>El Arte de la <em>Fragancia</em> Perfecta</h1>
     <p>Curados con precisión para quienes entienden que un perfume no se elige — se descubre.</p>
     <a href="#catalogo" class="hero-cta"><span>Explorar Colección</span></a>
-  </div>
-  <div class="hero-logo-deco">
-    <img src="https://i.imgur.com/j2Bbknj.png" alt="Livic" id="heroLogoImg">
-    <span class="hero-logo-deco-text">Perfumería de Autor</span>
   </div>
 </section>
 
@@ -223,6 +246,9 @@
   </div>
   <div class="filter-bar" id="filterBar"></div>
   <div class="products-grid" id="productsGrid"></div>
+  <div class="ver-mas-wrap" id="verMasWrap">
+    <button class="ver-mas-btn" onclick="verTodos()"><span>Ver todos los perfumes</span></button>
+  </div>
 </section>
 
 <!-- MARCAS -->
@@ -265,7 +291,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo" id="footerLogoWrap">
-    <img src="Gemini_Generated_Image_l6qhqrl6qhqrl6qh.png" alt="Livic" id="footerLogoImg">
+    <span class="footer-logo-text">LIVIC</span>
   </div>
   <div class="footer-links">
     <a href="#catalogo">Catálogo</a>
@@ -306,19 +332,6 @@
 </div>
 
 <script>
-// ── Fallbacks de logo ──
-document.getElementById('navLogoImg').onerror = function() {
-  this.style.display='none';
-  document.getElementById('navLogoWrap').innerHTML = '<span class="nav-logo-text">LIVIC<small>PRIVATE COLLECTION</small></span>';
-};
-document.getElementById('footerLogoImg').onerror = function() {
-  this.style.display='none';
-  document.getElementById('footerLogoWrap').innerHTML = '<span class="footer-logo-text">LIVIC</span>';
-};
-document.getElementById('heroLogoImg').onerror = function() {
-  this.parentElement.style.display='none';
-};
-
 // ══════════════════════════════════════════
 //  ✏️  EDITA AQUÍ TUS DATOS
 // ══════════════════════════════════════════
@@ -404,6 +417,8 @@ const PRODUCTS = [
 // ══════════════════════════════════════════
 
 let activeFilter = 'Todos';
+let mostrarTodos = false;
+const LIMITE = 8;
 
 function buildWaLink(msg) { return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`; }
 function buildProductWaLink(p) { return buildWaLink(`Hola, me interesa el perfume *${p.name}* (${p.brand}) — ${p.price}. ¿Está disponible?`); }
@@ -415,7 +430,12 @@ function updateWaButtons() {
 }
 
 function renderProducts() {
-  const list = activeFilter === 'Todos' ? PRODUCTS : PRODUCTS.filter(p => p.brand === activeFilter);
+  let list = activeFilter === 'Todos' ? PRODUCTS : PRODUCTS.filter(p => p.brand === activeFilter);
+  const filtrandoPorMarca = activeFilter !== 'Todos';
+  const mostrarBoton = !mostrarTodos && !filtrandoPorMarca && list.length > LIMITE;
+
+  if (!mostrarTodos && !filtrandoPorMarca) list = list.slice(0, LIMITE);
+
   document.getElementById('productsGrid').innerHTML = list.map(p => `
     <div class="product-card" onclick="openModal(${p.id})">
       <div class="card-img">
@@ -437,6 +457,15 @@ function renderProducts() {
         </div>
       </div>
     </div>`).join('');
+
+  // Mostrar u ocultar botón "Ver más"
+  const wrap = document.getElementById('verMasWrap');
+  wrap.style.display = mostrarBoton ? 'block' : 'none';
+}
+
+function verTodos() {
+  mostrarTodos = true;
+  renderProducts();
 }
 
 function renderFilters() {
@@ -446,7 +475,7 @@ function renderFilters() {
   ).join('');
 }
 
-function setFilter(b) { activeFilter = b; renderFilters(); renderProducts(); }
+function setFilter(b) { activeFilter = b; mostrarTodos = false; renderFilters(); renderProducts(); }
 
 function renderBrands() {
   document.getElementById('brandsDisplay').innerHTML =
